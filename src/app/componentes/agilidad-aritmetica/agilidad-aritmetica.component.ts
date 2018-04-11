@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
+/*import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
 import { JuegoAgilidad } from '../../clases/juego-agilidad'
 
 import {Subscription} from "rxjs";
@@ -47,5 +47,35 @@ export class AgilidadAritmeticaComponent implements OnInit {
 
    
   }  
+
+}*/
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
+import{JuegoAgilidad} from '../../clases/juego-agilidad';
+
+@Component({
+  selector: 'app-agilidad-aritmetica',
+  templateUrl: './agilidad-aritmetica.component.html',
+  styleUrls: ['./agilidad-aritmetica.component.css']
+})
+export class AgilidadAritmeticaComponent implements OnInit {
+
+  @Output() 
+  enviarJuego :EventEmitter<any>= new EventEmitter<any>();
+
+  public miJuego:JuegoAgilidad;
+  constructor() { 
+    this.miJuego = new JuegoAgilidad("Agilidad aritmetica");
+  }
+
+  Verificar()
+  {
+    //if (this.miJuego.Verificar()){
+      this.miJuego.Verificar();
+      this.enviarJuego.emit(this.miJuego);
+    //}
+  }
+
+  ngOnInit() {
+  }
 
 }

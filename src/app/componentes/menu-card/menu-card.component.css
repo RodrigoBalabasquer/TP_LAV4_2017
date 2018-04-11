@@ -1,57 +1,37 @@
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    border-radius: 5px; /* 5px rounded corners */
-    max-width: 300px;
-   height: 100%;
-    margin: 10px;
-    padding-bottom: 10px;
-    float: left;
-  background-color: #DEF3A6;
-    text-align: center;
+
+.imagenDeMenu{
+width: 50px;
+height: 40px;
 }
 
-/* Add rounded corners to the top left and the top right corner of the image */
-img {
-    border-radius: 5px 5px 0 0;
-    width: 200px;
-    height: 200px;
-}/* Add some padding inside the card container */
-.container {
-    padding: 2px 16px;
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #100000;
+    }
+
+.color-fondo{
+    background-color:#1abc9c;
 }
 
-
-.button{
-    margin-left: 1px;
-    display: inline-block;
-    width: 90%;
-    padding: 5px 15px;
-    font-size: 24px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
+.carousel-text-right{
+    width: 65%;
+    height: 85%;
+    padding-left: 465px;
+    padding-bottom: 8px;
+    position: absolute;
+    right: 15%;
+    bottom: 20px;
     color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
+    text-align: right;
+    text-align: justify;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+    font-size: 20px;
+}
 
-    border: none;
-    outline: 0;
- 
-    padding: 8px;
-    color: white;
-   /* background-color: #000;*/
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  .button:hover {background-color: #3e8e41}
-  
-  .button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+.fuente{
+    font-family: 'Acme', sans-serif;
+}

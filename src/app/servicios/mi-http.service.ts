@@ -32,4 +32,18 @@ export class MiHttpService {
       return error;
   }
 
+  entregarUnJugador(url:string,player:any)
+  {
+    //console.log(person);
+    var param = {"usuario":player.usuario,"nombre":player.nombre,"apellido":player.apellido,"contrasenia":player.contrasenia,"email":player.email};
+    var paramString = JSON.stringify(param);
+    console.log(param);
+    //var paramString= "nombre="+person.nombre+"&sexo="+person.sexo+"&mail="+person.mail+"&password="+person.password+"&foto="+person.foto;
+    console.log(paramString);
+    return this.http.post(url,paramString).toPromise().then(this.extraerDatos).catch(this.manejadorDeError);
+  }
+  manejadorDeError(error:Response|any)
+  {
+    return error;
+  }
 }

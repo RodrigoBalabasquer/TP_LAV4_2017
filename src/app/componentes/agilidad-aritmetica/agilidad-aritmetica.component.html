@@ -1,8 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!--app-menu></app-menu-->
-<!-- index.html -->
-
-
+<!--
 <form name="juego">
 <ul>
    <li>
@@ -35,4 +31,29 @@
   </li>
 </ul>
 
-</form>
+</form>-->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <div style="text-align:center">
+    <h1>
+      {{miJuego.Nombre}}
+    </h1>
+  </div>
+  <form name ="juego-aritmetica" style="margin: 0% auto; width: 70%;">
+    <h2>Operación </h2>
+
+    <input name="operador1" value="{{miJuego.Numero1}}" type="text" readonly>
+    <br>
+    <input name="operador" value="{{miJuego.Operador}}" type="text" readonly>
+    <br>
+    <input name="operador2" value="{{miJuego.Numero2}}" type="text" readonly>
+    <br>
+    <br>
+    <h2>Ingrese Resulatado:</h2>
+    <input [(ngModel)]="miJuego.Resultado"  name="Resultado" class="form-control input-sm chat-input" type="text">
+    
+    <br><br>
+    <button (click)="miJuego.GenerarJuego()" class="btn btn-success btn-lg">Generar Operación</button>
+    <button (click)="Verificar()" class="btn btn-info btn-lg">Verificar operación</button>
+    <br><br>
+    <button routerLink="/principal" class="btn btn-danger btn-lg">Volver</button>
+  </form>

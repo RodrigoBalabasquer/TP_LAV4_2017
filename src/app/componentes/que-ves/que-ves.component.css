@@ -1,0 +1,35 @@
+
+.color-fondo{
+    background-color:#91d3a3;
+}
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+   
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+#snackbar.Ganador {
+    background-color: rgba(17, 215, 230, 0.973);
+}
+#snackbar.Perdedor {
+    background-color: rgb(255, 0, 106);
+}
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+.fuente{
+    font-family: 'Permanent Marker', cursive;
+}

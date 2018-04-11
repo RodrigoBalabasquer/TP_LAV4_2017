@@ -1,11 +1,16 @@
 .panel
 {
-    height: 200px;
-    background-image: url("/TP_LAV4_2017/assets/imagenes/cabecera.png");
+    height: 100px;
+    /*background-image: url("/TP_LAV4_2017/assets/imagenes/cabecera.png");*/
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 
@@ -18,7 +23,7 @@ transform: translate(-50%, -50%);
 color: #3E06B0;
 }
 
-.hero-text a {
+.enlaceboton {
 border: none;
 outline: 0;
 display: inline-block;
@@ -29,7 +34,29 @@ text-align: center;
 cursor: pointer;
 }
 
-.hero-text a:hover {
+.enlaceboton:hover {
 background-color: #555;
 color: white;
+}
+
+a{
+    color: #243dc0;
+    text-decoration: none;
+}
+
+.button-right {
+    /*
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: right; */
+    padding: 20px 12px;
+    float: right;
+ 
+
+}
+
+.fuente{
+    font-family: 'Lobster', cursive;
 }

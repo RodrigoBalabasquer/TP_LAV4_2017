@@ -1,7 +1,7 @@
 import { log } from 'util';
 import { Injectable } from '@angular/core';
 
-import { Http, Response } from '@angular/http';
+import { Http, Response,RequestOptions,Headers } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -49,4 +49,19 @@ export class MiHttpService {
   {
     return error;
   }
+  entregarUnJugador(url:string,player:any)
+  {
+    console.log(url);
+    var param = {usuario:player.usuario,nombre:player.nombre,apellido:player.apellido,contrasenia:player.contrasenia,email:player.email};
+    var paramString = JSON.stringify(param);
+    let header = new Headers();
+    header.append('Content-Type','application/json');
+    console.log(param);
+    //var paramString= "usuario="+player.usuario+"&nombre="+player.nombre+"&apellido="+player.apellido+"&contrasenia="+player.contrasenia+"&email="+player.email;
+    console.log(paramString);
+    
+    //return this.http.post(url,paramString).toPromise().then(this.extractData).catch(this.handleError);
+    return this.http.post(url,paramString,{headers:header}).toPromise().then(this.extractData).catch(this.handleError);
+  }
+  
 }
