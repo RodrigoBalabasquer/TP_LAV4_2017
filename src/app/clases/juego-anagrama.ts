@@ -8,7 +8,7 @@ export class JuegoAnagrama extends Juego {
     palabraIngresada="";
 
     constructor(nombre?: string, gano?: boolean,jugador?:string){
-        super(" Anagrama ",gano,jugador);
+        super("Anagrama",gano,jugador);
     }
 
     arrayDePalabras : Array <any >= [

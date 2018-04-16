@@ -7,11 +7,16 @@ import { JuegoServiceService } from '../../servicios/juego-service.service';
   styleUrls: ['./listado.component.css']
 })
 export class ListadoComponent implements OnInit {
-  public listadoParaCompartir: Array<any>;
+  
+  juego:string= "";
+  jugador:boolean = false;
+  resultado: string = "2";
+  public listadoParaCompartir: Array<any> = [];
    miServicioJuego:JuegoServiceService
 
   constructor(servicioJuego:JuegoServiceService) {
     this.miServicioJuego = servicioJuego;
+    this.listar(null,null,null);
     
   }
   
@@ -19,7 +24,65 @@ export class ListadoComponent implements OnInit {
     
   }
 
-  llamaService(){
+  listar(juego?:string,jugador?:string,resultado?:number)
+  { 
+    /*juego = "Agilidad Visual";
+    jugador = "Rodrix14";
+    resultado = false;*/
+    this.miServicioJuego.TraerJuego(juego,jugador,resultado)
+      .then((datos)=> {
+        if(datos != null){
+          this.listadoParaCompartir = datos;
+        }
+        else
+          this.listadoParaCompartir = [];
+      })
+      .catch( 
+        (noSeEncontroUsuario) => {alert("Datos incorrectos");}
+      );
+  }
+  buscar()
+  {
+    //alert(this.juego);
+    let player: string = null;
+    let result: number = null;
+    if(this.jugador)
+    {
+      let userjs = localStorage.getItem("Usuario");
+      let user:any = userjs!=null?JSON.parse(userjs):null;
+      player = user.usuario;
+    }
+    if(this.juego == "")
+      this.juego = null;
+    switch(this.resultado)
+    {
+      case "1":
+        result = 1;
+        break;
+      case "2":
+        result = 2;
+        break;
+      case "3":
+        result = null;
+        break;
+    }
+
+    this.miServicioJuego.TraerJuego(this.juego,player,result)
+      .then((datos)=> {
+        if(datos != null){
+          this.listadoParaCompartir = datos;
+        }
+        else
+          this.listadoParaCompartir = [];
+      })
+      .catch( 
+        (noSeEncontroUsuario) => {alert("Datos incorrectos");}
+      );
+
+      if(this.juego == null)
+        this.juego = "";
+  }
+  /*llamaService(){
     console.log("llamaService");
     this.listadoParaCompartir= this.miServicioJuego.listar();
   }
@@ -29,5 +92,5 @@ export class ListadoComponent implements OnInit {
     this.miServicioJuego.listarPromesa().then((listado) => {
         this.listadoParaCompartir = listado;
     });
-  }
+  }*/
 }

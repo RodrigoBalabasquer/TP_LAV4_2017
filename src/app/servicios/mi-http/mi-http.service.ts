@@ -63,5 +63,36 @@ export class MiHttpService {
     //return this.http.post(url,paramString).toPromise().then(this.extractData).catch(this.handleError);
     return this.http.post(url,paramString,{headers:header}).toPromise().then(this.extractData).catch(this.handleError);
   }
-  
+  buscarJugador(url:string,usuario:string,clave:string)
+  {
+    var param = {usuario:usuario,contrasenia:clave};
+    var paramString = JSON.stringify(param);
+    let header = new Headers();
+    header.append('Content-Type','application/json');
+    //return this.http.post(url,paramString).toPromise().then(this.extractData).catch(this.handleError);
+    return this.http.post(url,paramString,{headers:header}).toPromise().then(this.extractData).catch(this.handleError);
+  }
+  buscarJuegos(url:string,juego:string,jugador:string,resultado:number)
+  { 
+    var param = {juego:juego,jugador:jugador,resultado:resultado};
+    var paramString = JSON.stringify(param);
+    let header = new Headers();
+    header.append('Content-Type','application/json');
+    //return this.http.post(url,paramString).toPromise().then(this.extractData).catch(this.handleError);
+    return this.http.post(url,paramString,{headers:header}).toPromise().then(this.extractData).catch(this.handleError);
+  }
+  entregarUnJuego(url:string,game:any)
+  {
+    console.log(url);
+    var param = {jugador:game.jugador,juego:game.nombre,resultado:game.gano};
+    var paramString = JSON.stringify(param);
+    let header = new Headers();
+    header.append('Content-Type','application/json');
+    console.log(param);
+    //var paramString= "usuario="+player.usuario+"&nombre="+player.nombre+"&apellido="+player.apellido+"&contrasenia="+player.contrasenia+"&email="+player.email;
+    console.log(paramString);
+    
+    //return this.http.post(url,paramString).toPromise().then(this.extractData).catch(this.handleError);
+    return this.http.post(url,paramString,{headers:header}).toPromise().then(this.extractData).catch(this.handleError);
+  }
 }

@@ -22,7 +22,7 @@ export class RegistroComponent implements OnInit {
   
 
   constructor(private router: Router,ServicioJugador: JugadoresService ) {
-    this.jugador = new Jugador();
+    this.jugador = new Jugador(null,null,null,null,null,null);
     this.miServicioJugador = ServicioJugador;
    }
 

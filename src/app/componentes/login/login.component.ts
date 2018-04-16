@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import {Subscription} from "rxjs";
 import {TimerObservable} from "rxjs/observable/TimerObservable";
+import { JugadoresService } from "../../servicios/jugadores.service";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,6 +13,7 @@ import {TimerObservable} from "rxjs/observable/TimerObservable";
 export class LoginComponent implements OnInit {
 
   private subscription: Subscription;
+  miServicioJugador:JugadoresService;
   usuario = '';
   clave= '';
   progreso: number;
@@ -22,9 +25,11 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    ServicioJugador: JugadoresService) {
       this.progreso=0;
       this.ProgresoDeAncho="0%";
+      this.miServicioJugador = ServicioJugador;
 
   }
 
@@ -32,9 +37,22 @@ export class LoginComponent implements OnInit {
   }
 
   Entrar() {
-    if (this.usuario === 'admin' && this.clave === 'admin') {
+    
+    //if (this.usuario === 'admin' && this.clave === 'admin') {
+    //  this.router.navigate(['/Principal']);
+    //}
+    this.miServicioJugador.BuscarUsuario(this.usuario,this.clave)
+    .then((datos)=> {
+      if(datos != null){
+      localStorage.setItem("Usuario",JSON.stringify(datos));
       this.router.navigate(['/Principal']);
-    }
+      }
+      else
+      alert("Datos incorrectos");
+    })
+    .catch( 
+      (noSeEncontroUsuario) => {alert("Datos incorrectos");}
+    );
   }
   MoverBarraDeProgreso() {
     

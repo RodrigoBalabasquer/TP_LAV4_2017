@@ -1,6 +1,7 @@
 
 import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
-import { JuegoAdivina } from '../../clases/juego-adivina'
+import { JuegoAdivina } from '../../clases/juego-adivina';
+import { JuegoServiceService } from "../../servicios/juego-service.service";
 
 @Component({
   selector: 'app-adivina-el-numero',
@@ -14,11 +15,16 @@ export class AdivinaElNumeroComponent implements OnInit {
   Mensajes:string;
   contador:number;
   ocultarVerificar:boolean;
+  miServicioJuego:JuegoServiceService;
  
-  constructor() { 
+  constructor(ServicioJuego: JuegoServiceService) { 
     this.nuevoJuego = new JuegoAdivina();
-    console.info("numero Secreto:",this.nuevoJuego.numeroSecreto);  
+    //console.info("numero Secreto:",this.nuevoJuego.numeroSecreto);  
+    let userjs = localStorage.getItem("Usuario");
+    let user:any = userjs!=null?JSON.parse(userjs):null;
+    this.nuevoJuego.jugador = user.usuario;
     this.ocultarVerificar=false;
+    this.miServicioJuego = ServicioJuego;
   }
   generarnumero() {
     this.nuevoJuego.generarnumero();
@@ -26,7 +32,6 @@ export class AdivinaElNumeroComponent implements OnInit {
   }
   verificar()
   {
-    this.contador++;
     this.ocultarVerificar=true;
     console.info("numero Secreto:",this.nuevoJuego.gano);  
     if (this.nuevoJuego.verificar()){
@@ -34,9 +39,10 @@ export class AdivinaElNumeroComponent implements OnInit {
       this.enviarJuego.emit(this.nuevoJuego);
       this.MostarMensaje("Sos un Genio!!!",true);
       this.nuevoJuego.numeroSecreto=0;
-
+      this.miServicioJuego.guardarJuego(this.nuevoJuego);
     }else{
-
+      this.contador++;
+    
       let mensaje:string;
       switch (this.contador) {
         case 1:
@@ -57,14 +63,20 @@ export class AdivinaElNumeroComponent implements OnInit {
           case 6:
           mensaje="Afortunado en el amor";
           break;
-      
+          case 10:
+          mensaje="UHH mala suerte, perdiste";
+          break;
         default:
             mensaje="Ya le erraste "+ this.contador+" veces";
           break;
       }
       this.MostarMensaje("#"+this.contador+" "+mensaje+" ayuda :"+this.nuevoJuego.retornarAyuda());
-     
-
+      if(this.contador == 10)
+      {
+        this.enviarJuego.emit(this.nuevoJuego);
+        this.nuevoJuego.numeroSecreto=0;
+        this.miServicioJuego.guardarJuego(this.nuevoJuego);
+      }
     }
     console.info("numero Secreto:",this.nuevoJuego.gano);  
   }  
@@ -82,7 +94,7 @@ export class AdivinaElNumeroComponent implements OnInit {
     setTimeout(function(){ 
       x.className = x.className.replace("show", "");
       modelo.ocultarVerificar=false;
-     }, 3000);
+     }, 1000);
     console.info("objeto",x);
   
    }  

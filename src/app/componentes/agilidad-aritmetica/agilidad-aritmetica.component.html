@@ -1,6 +1,6 @@
 <div style="text-align:center">
     <h1>
-      {{miJuego.Nombre}}
+      {{miJuego.nombre}}
     </h1>
   </div>
   <form name ="juego-aritmetica" style="margin: 0% auto; width: 70%;">
@@ -17,8 +17,7 @@
     <input [(ngModel)]="miJuego.Resultado"  name="Resultado" class="form-control input-sm chat-input" type="text">
     
     <br><br>
-    <button (click)="miJuego.GenerarJuego()" class="btn btn-success btn-lg">Generar Operación</button>
-    <button (click)="Verificar()" class="btn btn-info btn-lg">Verificar operación</button>
-    <br><br>
-    <button routerLink="/principal" class="btn btn-danger btn-lg">Volver</button>
+    <button *ngIf="generar" (click)="GenerarJuego()" class="btn btn-success btn-lg">Generar Operación</button>
+    <h1 *ngIf="verificar" >Tiempo Restante: {{Tiempo}}</h1>
+    <button *ngIf="verificar" (click)="Verificar()" class="btn btn-info btn-lg">Verificar operación</button>
   </form>

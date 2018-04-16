@@ -53,5 +53,24 @@ filtrado:any;
     })
     .catch(error => {console.log(error)});
   }
+  BuscarUsuario(usuario:string,clave:string):Promise<Jugador>
+  {
+    let promesa: Promise<Jugador> = new Promise((resolve, reject) =>
+    {
+      this.miPlayerArchive.miHttp.buscarJugador("http://localhost:8080/apirest/apirestV6-JWT-MW-POO/usuario/traer",usuario,clave)
+      .then(datos=> {
+        if(datos.length  > 0 ){
+        let jugador: Jugador = new Jugador(datos[0].id,datos[0].usuario,datos[0].nombre,datos[0].apellido,datos[0].contrasenia,datos[0].email);
+                          resolve(jugador);}
+        else
+        {
+          //let jugadorFail: Jugador = new Jugador(0,null,null,null,null,null);
+          resolve(null);
+        }
+      })
+      .catch(error => {console.log(error)});
+    });
+    return promesa;
+  }
 
 }

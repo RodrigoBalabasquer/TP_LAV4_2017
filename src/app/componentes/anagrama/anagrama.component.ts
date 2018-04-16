@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { JuegoAnagrama } from '../../clases/juego-anagrama';
+import { JuegoServiceService } from "../../servicios/juego-service.service";
 
 @Component({
   selector: 'app-anagrama',
@@ -7,6 +8,8 @@ import { JuegoAnagrama } from '../../clases/juego-anagrama';
   styleUrls: ['./anagrama.component.css']
 })
 export class AnagramaComponent implements OnInit {
+@Output() enviarJuego: EventEmitter<any>= new EventEmitter<any>();
+
 
   nuevoJuego: JuegoAnagrama;
   Mensajes:string;
@@ -14,11 +17,15 @@ export class AnagramaComponent implements OnInit {
   ocultarVerificar:boolean;
   mensaje : string;
   ocultarComenzar : boolean = true;
+  miServicioJuego:JuegoServiceService;
 
-
-  constructor() {
+  constructor(ServicioJuego: JuegoServiceService) {
     this.nuevoJuego = new JuegoAnagrama(); 
     this.ocultarVerificar=true;
+    this.miServicioJuego = ServicioJuego;
+    let userjs = localStorage.getItem("Usuario");
+    let user:any = userjs!=null?JSON.parse(userjs):null;
+    this.nuevoJuego.jugador = user.usuario;
    }
 
    generarPalabra() {
@@ -32,21 +39,37 @@ export class AnagramaComponent implements OnInit {
 
   verificar()
   {
-    this.contador++;
     this.ocultarVerificar=true;
     if (this.nuevoJuego.verificar()){
-      this.MostarMensaje("Sos un Genio!!!",true);
+      this.MostarMensaje("Sos un Genio!!!",true,10);
+      this.enviarJuego.emit(this.nuevoJuego);
+      this.ocultarComenzar = true;
+      this.miServicioJuego.guardarJuego(this.nuevoJuego);
+    
     }else{
-      this.mensaje = "Ooops, casi lo lograste!";
-      this.MostarMensaje(this.mensaje); 
-      this.nuevoJuego.palabraIngresada ="";
-      this.nuevoJuego.palabraDesordenada = "";
+      this.contador++;
+      if(this.contador == 10)
+      { 
+        this.enviarJuego.emit(this.nuevoJuego);
+        this.mensaje = "Ooops, se te acabaron los intentos!";
+        this.MostarMensaje(this.mensaje,false,this.contador);
+        this.nuevoJuego.palabraDesordenada = "";
+        this.nuevoJuego.palabraIngresada ="";
+        this.ocultarComenzar = true;
+        this.miServicioJuego.guardarJuego(this.nuevoJuego);
+    
+      }
+      else
+      {
+        this.mensaje = "Ooops, casi lo lograste!";
+        this.MostarMensaje(this.mensaje,false,this.contador); 
+        this.nuevoJuego.palabraIngresada ="";
+    }
     }
     console.info("Gano: ",this.nuevoJuego.gano);  
-    this.ocultarComenzar = true;
   }  
 
-  MostarMensaje(mensaje:string,gano:boolean=false) {
+  MostarMensaje(mensaje:string,gano:boolean=false,cont:number) {
     this.Mensajes = mensaje;    
     var x = document.getElementById("snackbar");
     if(gano)
@@ -59,8 +82,9 @@ export class AnagramaComponent implements OnInit {
     var modelo = this;
     setTimeout(function(){ 
       x.className = x.className.replace("show", "");
-      //modelo.ocultarVerificar=false;
-     }, 3000);
+      if(cont < 10)
+        modelo.ocultarVerificar=false;
+     }, 1500);
     console.info("objeto",x);
   
    }  

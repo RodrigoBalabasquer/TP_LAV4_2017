@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Juego } from '../../clases/juego';
+import { JuegoAgilidad} from '../../clases/juego-agilidad';
 @Component({
   selector: 'app-agilidad-mas-listado',
   templateUrl: './agilidad-mas-listado.component.html',
@@ -14,7 +15,7 @@ export class AgilidadMasListadoComponent implements OnInit {
 
   tomarJuegoTerminado(juego: Juego)
   {
-    this.listadoParaCompartir.push(juego);
-    console.info("en app",this.listadoParaCompartir);
+    var nuevoJuego: JuegoAgilidad = new JuegoAgilidad(juego.nombre,juego.gano,juego.jugador);
+    this.listadoParaCompartir.push(nuevoJuego);
   }
 }

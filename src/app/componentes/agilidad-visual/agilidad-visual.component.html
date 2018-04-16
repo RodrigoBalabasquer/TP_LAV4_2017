@@ -5,32 +5,31 @@
 </div>
 <form name ="juego-visual" style="margin: 0% auto; width: 70%;">
 
-    <button (click)="miJuego.GenerarJuego()" class="btn btn-success btn-lg">Generar juego</button>
+    <button *ngIf="!miJuego.generado" (click)="GenerarJuego()" class="btn btn-success btn-lg">Generar juego</button>
     <br><br>
+    <h1 *ngIf="miJuego.generado" >Tiempo Restante: {{Tiempo}}</h1>
     <div *ngIf="miJuego.generado">
       
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[0])">{{miJuego.numeros[0]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[1])">{{miJuego.numeros[1]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[2])">{{miJuego.numeros[2]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[3])">{{miJuego.numeros[3]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[4])">{{miJuego.numeros[4]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[5])">{{miJuego.numeros[5]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[6])">{{miJuego.numeros[6]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[7])">{{miJuego.numeros[7]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[8])">{{miJuego.numeros[8]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[9])">{{miJuego.numeros[9]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[10])">{{miJuego.numeros[10]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[11])">{{miJuego.numeros[11]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[12])">{{miJuego.numeros[12]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[13])">{{miJuego.numeros[13]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[14])">{{miJuego.numeros[14]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[15])">{{miJuego.numeros[15]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[16])">{{miJuego.numeros[16]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[17])">{{miJuego.numeros[17]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[18])">{{miJuego.numeros[18]}}</button>
-      <button class="btn btn-info" (click)="miJuego.Verificar(miJuego.numeros[19])">{{miJuego.numeros[19]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[0])">{{miJuego.numeros[0]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[1])">{{miJuego.numeros[1]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[2])">{{miJuego.numeros[2]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[3])">{{miJuego.numeros[3]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[4])">{{miJuego.numeros[4]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[5])">{{miJuego.numeros[5]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[6])">{{miJuego.numeros[6]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[7])">{{miJuego.numeros[7]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[8])">{{miJuego.numeros[8]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[9])">{{miJuego.numeros[9]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[10])">{{miJuego.numeros[10]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[11])">{{miJuego.numeros[11]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[12])">{{miJuego.numeros[12]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[13])">{{miJuego.numeros[13]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[14])">{{miJuego.numeros[14]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[15])">{{miJuego.numeros[15]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[16])">{{miJuego.numeros[16]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[17])">{{miJuego.numeros[17]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[18])">{{miJuego.numeros[18]}}</button>
+      <button class="btn btn-info" (click)="Verificar(miJuego.numeros[19])">{{miJuego.numeros[19]}}</button>
 
     </div>
-    <br><br>
-    <button routerLink="/principal" class="btn btn-danger btn-lg">Volver</button>
   </form>

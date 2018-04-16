@@ -1,14 +1,38 @@
-
 <!--input type="button" (click)="llamaService()" class="btn btn-info" value="Pulsame" > 
-<input type="button" (click)="llamaServicePromesa()" class="btn btn-info" value="Pulsame Promesa" --> 
+<input type="button" (click)="llamaServicePromesa()" class="btn btn-info" value="Pulsame Promesa" -->
 
 <!-- Centered Pills -->
-<ul class="nav nav-pills nav-justified">
+<!--<ul class="nav nav-pills nav-justified">
     <li class="active"><a routerLink="/Principal">Sala de Juegos</a></li>
     <li><a (click)="llamaService()">Servicio</a></li>
     <li><a (click)="llamaServicePromesa()">Serv Promesa</a></li>
     <li><a (click)="llamaServicePromesa()">Serv observable</a></li>
-  </ul>
-  
-<app-listado-de-resultados [listado]="listadoParaCompartir"> </app-listado-de-resultados>
+  </ul>-->
+<app-menu></app-menu>
+<div class="form-inline">
+  <div class="form-group">
+    <select [(ngModel)]="juego" class="form-control" id="select">
+      <option value="">Todos</option>
+      <option value="Agilidad Visual">Agilidad Visual</option>
+      <option value="Agilidad Aritmetica">Agilidad Aritmetica</option>
+      <option value="Adivina el número">Adivina el número</option>
+      <option value="Anagrama">Anagrama</option>
+      <option value="Piedra papel o tijeras">Piedra papel o tijeras</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label class="checkbox-inline"><input [(ngModel)]="jugador" type="checkbox" value=false>Mis Resultados</label>
+  </div>
+  <div class="form-group">
+    <div  class="radio">
+      <label><input [(ngModel)]="resultado" type="radio" value=1 name="optradio">Ganados</label>
+      <label><input [(ngModel)]="resultado" type="radio" value=2 name="optradio">Perdidos</label>
+      <label><input [(ngModel)]="resultado" type="radio" value=3 name="optradio">Indistinto</label>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" id="botonRegistro" class="btn btn-info " (click)="buscar()">Buscar</button>
+  </div>
+</div>
 
+<app-listado-de-resultados [listado]="listadoParaCompartir"> </app-listado-de-resultados>
