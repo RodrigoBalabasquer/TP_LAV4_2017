@@ -10,7 +10,7 @@ export class ListadoComponent implements OnInit {
   
   juego:string= "";
   jugador:boolean = false;
-  resultado: string = "2";
+  resultado: string = "3";
   public listadoParaCompartir: Array<any> = [];
    miServicioJuego:JuegoServiceService
 

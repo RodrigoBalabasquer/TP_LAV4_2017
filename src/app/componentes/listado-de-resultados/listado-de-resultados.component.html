@@ -7,7 +7,7 @@
 
 <table class="table table-condensed">
     <thead>
-      <tr>
+      <tr style="background-color: black;color: white;">
         <th>Juego</th>
         <th>Jugador</th>
         <th>Resultado</th>
@@ -15,10 +15,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let juego of listado">
-        <td>{{juego.nombre}} </td>
-        <td>{{juego.jugador}} </td> 
-        <td *ngIf="juego.gano">Gano </td>   
-        <td *ngIf="!juego.gano">Perdio</td>     
+        <td *ngIf="juego.gano == 1" class='success'>{{juego.nombre}} </td>
+        <td *ngIf="juego.gano == 0" class='danger'>{{juego.nombre}} </td>
+        <td *ngIf="juego.gano == 1" class='success'>{{juego.jugador}} </td>
+        <td *ngIf="juego.gano == 0" class='danger'>{{juego.jugador}} </td>
+        <td *ngIf="juego.gano == 1" class='success'>Gano </td>   
+        <td *ngIf="juego.gano == 0" class='danger'>Perdio</td>     
       </tr>
      
     </tbody>

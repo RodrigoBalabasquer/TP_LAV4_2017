@@ -10,7 +10,9 @@
   </ul>-->
 <app-menu></app-menu>
 <div class="form-inline">
-  <div class="form-group">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-2">
     <select [(ngModel)]="juego" class="form-control" id="select">
       <option value="">Todos</option>
       <option value="Agilidad Visual">Agilidad Visual</option>
@@ -20,17 +22,17 @@
       <option value="Piedra papel o tijeras">Piedra papel o tijeras</option>
     </select>
   </div>
-  <div class="form-group">
-    <label class="checkbox-inline"><input [(ngModel)]="jugador" type="checkbox" value=false>Mis Resultados</label>
+  <div class="col-md-1">
+    <label class="checkbox-inline"  style="color: white"><input [(ngModel)]="jugador" type="checkbox" value=false>Mis Resultados</label>
   </div>
-  <div class="form-group">
+  <div class="col-md-2">
     <div  class="radio">
-      <label><input [(ngModel)]="resultado" type="radio" value=1 name="optradio">Ganados</label>
-      <label><input [(ngModel)]="resultado" type="radio" value=2 name="optradio">Perdidos</label>
-      <label><input [(ngModel)]="resultado" type="radio" value=3 name="optradio">Indistinto</label>
+      <label style="color: white"><input [(ngModel)]="resultado" type="radio" value=1 name="optradio">Ganados</label>
+      <label style="color: white"><input [(ngModel)]="resultado" type="radio" value=2 name="optradio">Perdidos</label>
+      <label style="color: white"><input [(ngModel)]="resultado" type="radio" value=3 name="optradio">Indistinto</label>
     </div>
   </div>
-  <div class="form-group">
+  <div class="col-md-2">
     <button type="submit" id="botonRegistro" class="btn btn-info " (click)="buscar()">Buscar</button>
   </div>
 </div>
