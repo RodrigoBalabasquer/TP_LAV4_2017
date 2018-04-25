@@ -22,7 +22,7 @@ export class AgilidadVisualComponent implements OnInit {
     let user:any = userjs!=null?JSON.parse(userjs):null;
     this.miJuego.jugador = user.usuario;
     this.miServicioJuego = ServicioJuego;
-    this.Tiempo = 25;
+    this.Tiempo = 50;
    }
 
   Verificar(num:number)
@@ -34,7 +34,7 @@ export class AgilidadVisualComponent implements OnInit {
                 clearInterval(this.repetidor);
                 alert("Usted Gano!!!");
                 this.miJuego.generado = false;
-                this.miJuego.numeroActual = 20;
+                this.miJuego.numeroActual = 24;
                 this.miJuego.gano = true;
                 this.enviarJuego.emit(this.miJuego);
                 this.miServicioJuego.guardarJuego(this.miJuego);
@@ -50,9 +50,10 @@ export class AgilidadVisualComponent implements OnInit {
         else
         {   
             clearInterval(this.repetidor);
+            this.Tiempo=50;
             alert("Usted Perdio!!!");
             this.miJuego.generado = false;
-            this.miJuego.numeroActual = 20;
+            this.miJuego.numeroActual = 24;
             this.miJuego.gano = false;
             this.enviarJuego.emit(this.miJuego);
             this.miServicioJuego.guardarJuego(this.miJuego);
@@ -63,22 +64,22 @@ export class AgilidadVisualComponent implements OnInit {
   {
       this.miJuego.numeros = [];
       var Num: number = 0;
-      var numerosDisponibles: Array<number> = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
-      for(let i=0;i<20;i++)
+      var numerosDisponibles: Array<number> = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
+      for(let i=0;i<24;i++)
       {
           Num = Math.floor((Math.random() * numerosDisponibles.length) + 1);
           this.miJuego.numeros.push(numerosDisponibles[Num - 1]);
           numerosDisponibles.splice(Num - 1,1);
       }
       this.miJuego.generado = true;
-      this.miJuego.numeroActual = 20;
+      this.miJuego.numeroActual = 24;
       
       this.repetidor = setInterval(()=>{ 
       this.Tiempo--;
         if(this.Tiempo==0 ) {
           clearInterval(this.repetidor);
           //this.Verificar();
-          this.Tiempo=25;
+          this.Tiempo=50;
           this.miJuego.gano=false;
           this.miJuego.generado = false;
           this.enviarJuego.emit(this.miJuego);

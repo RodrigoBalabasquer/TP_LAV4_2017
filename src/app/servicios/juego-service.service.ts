@@ -76,7 +76,6 @@ export class JuegoServiceService {
       .catch(error => { console.log(error) });
   }
   TraerJuego(juego: string, jugador: string, resultado: number): Promise<Array<Juego>> {
-    debugger;
     let promesa: Promise<Array<Juego>> = new Promise((resolve, reject) => {
       this.miGame.miHttp.buscarJuegos("http://localhost:8080/apirest/apirestV6-JWT-MW-POO/usuario/traerJuegos", juego, jugador, resultado)
         .then(datos => {
