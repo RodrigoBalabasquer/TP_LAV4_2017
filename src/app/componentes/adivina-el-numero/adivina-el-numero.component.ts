@@ -16,6 +16,7 @@ export class AdivinaElNumeroComponent implements OnInit {
   contador:number;
   ocultarVerificar:boolean;
   miServicioJuego:JuegoServiceService;
+  numerosIntentados: string = "";
  
   constructor(ServicioJuego: JuegoServiceService) { 
     this.nuevoJuego = new JuegoAdivina();
@@ -29,6 +30,7 @@ export class AdivinaElNumeroComponent implements OnInit {
   generarnumero() {
     this.nuevoJuego.generarnumero();
     this.contador=0;
+    this.numerosIntentados = "";
   }
   verificar()
   {
@@ -42,11 +44,14 @@ export class AdivinaElNumeroComponent implements OnInit {
       this.miServicioJuego.guardarJuego(this.nuevoJuego);
     }else{
       this.contador++;
-    
+      if(this.contador == 1)
+        this.numerosIntentados = this.nuevoJuego.numeroIngresado.toString();
+      else
+        this.numerosIntentados = this.numerosIntentados +", "+ this.nuevoJuego.numeroIngresado;
       let mensaje:string;
       switch (this.contador) {
         case 1:
-          mensaje="No, intento fallido, animo";
+          mensaje="No, Intento fallido, ánimo";
           break;
           case 2:
           mensaje="No,Te estaras Acercando???";
@@ -94,7 +99,7 @@ export class AdivinaElNumeroComponent implements OnInit {
     setTimeout(function(){ 
       x.className = x.className.replace("show", "");
       modelo.ocultarVerificar=false;
-     }, 1000);
+     }, 1500);
     console.info("objeto",x);
   
    }  

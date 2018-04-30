@@ -1,23 +1,33 @@
-<div style="text-align:center">
-    <h1>
-      {{miJuego.nombre}}
-    </h1>
-  </div>
-  <form name ="juego-aritmetica" style="margin: 0% auto; width: 70%;">
-    <h2>Operación </h2>
+<div style="text-align:center;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+  <h1>
+    {{miJuego.nombre}}
+  </h1>
+</div>
 
-    <input name="operador1" value="{{miJuego.Numero1}}" type="text" readonly>
+<div style="text-align: center;">
+
+  <div id="snackbar">{{Mensajes}}</div>
+  <form name="juego-aritmetica" style="margin: 0% auto; width: 70%;">
+    <!--<h2>Operación </h2>-->
+    <div class="row content">
+      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4 ">
+        <input name="operador1" value="{{miJuego.Numero1}}" type="text" class="form-control" style="text-align: center" readonly>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 ">
+        <input name="operador" value="{{miJuego.Operador}}" type="text" class="form-control" style="text-align: center" readonly>
+      </div>
+      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4 ">
+        <input name="operador2" value="{{miJuego.Numero2}}" type="text" class="form-control" style="text-align: center" readonly>
+      </div>
+    </div>
     <br>
-    <input name="operador" value="{{miJuego.Operador}}" type="text" readonly>
+    <h2>Ingrese Resultado:</h2>
+    <input [(ngModel)]="miJuego.Resultado" name="Resultado" class="form-control input-sm chat-input" type="text">
+
     <br>
-    <input name="operador2" value="{{miJuego.Numero2}}" type="text" readonly>
-    <br>
-    <br>
-    <h2>Ingrese Resulatado:</h2>
-    <input [(ngModel)]="miJuego.Resultado"  name="Resultado" class="form-control input-sm chat-input" type="text">
-    
-    <br><br>
     <button *ngIf="generar" (click)="GenerarJuego()" class="btn btn-success btn-lg">Generar Operación</button>
-    <h1 *ngIf="verificar" >Tiempo Restante: {{Tiempo}}</h1>
+    <h1 *ngIf="verificar">Tiempo Restante: {{Tiempo}}</h1>
     <button *ngIf="verificar" (click)="Verificar()" class="btn btn-info btn-lg">Verificar operación</button>
   </form>
+
+</div>

@@ -1,5 +1,5 @@
-<div style="text-align:center">
-  <h1>
+<div style="text-align:center;">
+  <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
     {{miJuego.nombre}}
   </h1>
 </div>
@@ -11,70 +11,72 @@
 <form name ="juego-visual">
 
     <div style="text-align: center">
-    <h1 *ngIf="miJuego.generado" >Tiempo Restante: {{Tiempo}}</h1>
+    <h1 *ngIf="miJuego.generado" style="color: blue" >Tiempo Restante: {{Tiempo}} Objetivo actual: {{miJuego.numeroActual}}</h1>
     </div>
     <br>
     <div *ngIf="miJuego.generado">
       
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ">
-        <button class="boton" (click)="Verificar(miJuego.numeros[0])">{{miJuego.numeros[0]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[0].estado" (click)="Verificar(miJuego.numeros[0].numero)">{{miJuego.numeros[0].numero}}</button>
         
-        <button class="boton" (click)="Verificar(miJuego.numeros[1])">{{miJuego.numeros[1]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[1].estado" (click)="Verificar(miJuego.numeros[1].numero)">{{miJuego.numeros[1].numero}}</button>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <button class="boton" (click)="Verificar(miJuego.numeros[2])">{{miJuego.numeros[2]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[2].estado" (click)="Verificar(miJuego.numeros[2].numero)">{{miJuego.numeros[2].numero}}</button>
         
-        <button class="boton" (click)="Verificar(miJuego.numeros[3])">{{miJuego.numeros[3]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[3].estado" (click)="Verificar(miJuego.numeros[3].numero)">{{miJuego.numeros[3].numero}}</button>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <button class="boton" (click)="Verificar(miJuego.numeros[4])">{{miJuego.numeros[4]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[4].estado" (click)="Verificar(miJuego.numeros[4].numero)">{{miJuego.numeros[4].numero}}</button>
         
-        <button class="boton" (click)="Verificar(miJuego.numeros[5])">{{miJuego.numeros[5]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[5].estado" (click)="Verificar(miJuego.numeros[5].numero)">{{miJuego.numeros[5].numero}}</button>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <button class="boton" (click)="Verificar(miJuego.numeros[6])">{{miJuego.numeros[6]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[6].estado" (click)="Verificar(miJuego.numeros[6].numero)">{{miJuego.numeros[6].numero}}</button>
         
-        <button class="boton" (click)="Verificar(miJuego.numeros[7])">{{miJuego.numeros[7]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[7].estado" (click)="Verificar(miJuego.numeros[7].numero)">{{miJuego.numeros[7].numero}}</button>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <button class="boton" (click)="Verificar(miJuego.numeros[8])">{{miJuego.numeros[8]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[8].estado" (click)="Verificar(miJuego.numeros[8].numero)">{{miJuego.numeros[8].numero}}</button>
         
-        <button class="boton" (click)="Verificar(miJuego.numeros[9])">{{miJuego.numeros[9]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[9].estado" (click)="Verificar(miJuego.numeros[9].numero)">{{miJuego.numeros[9].numero}}</button>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <button class="boton" (click)="Verificar(miJuego.numeros[10])">{{miJuego.numeros[10]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[10].estado" (click)="Verificar(miJuego.numeros[10].numero)">{{miJuego.numeros[10].numero}}</button>
         
-        <button class="boton" (click)="Verificar(miJuego.numeros[11])">{{miJuego.numeros[11]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[11].estado" (click)="Verificar(miJuego.numeros[11].numero)">{{miJuego.numeros[11].numero}}</button>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <button class="boton" (click)="Verificar(miJuego.numeros[12])">{{miJuego.numeros[12]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[12].estado" (click)="Verificar(miJuego.numeros[12].numero)">{{miJuego.numeros[12].numero}}</button>
         
-        <button class="boton" (click)="Verificar(miJuego.numeros[13])">{{miJuego.numeros[13]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[13].estado" (click)="Verificar(miJuego.numeros[13].numero)">{{miJuego.numeros[13].numero}}</button>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <button class="boton" (click)="Verificar(miJuego.numeros[14])">{{miJuego.numeros[14]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[14].estado" (click)="Verificar(miJuego.numeros[14].numero)">{{miJuego.numeros[14].numero}}</button>
         
-        <button class="boton" (click)="Verificar(miJuego.numeros[15])">{{miJuego.numeros[15]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[15].estado" (click)="Verificar(miJuego.numeros[15].numero)">{{miJuego.numeros[15].numero}}</button>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <button class="boton" (click)="Verificar(miJuego.numeros[16])">{{miJuego.numeros[16]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[16].estado" (click)="Verificar(miJuego.numeros[16].numero)">{{miJuego.numeros[16].numero}}</button>
         
-        <button class="boton" (click)="Verificar(miJuego.numeros[17])">{{miJuego.numeros[17]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[17].estado" (click)="Verificar(miJuego.numeros[17].numero)">{{miJuego.numeros[17].numero}}</button>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <button class="boton" (click)="Verificar(miJuego.numeros[18])">{{miJuego.numeros[18]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[18].estado" (click)="Verificar(miJuego.numeros[18].numero)">{{miJuego.numeros[18].numero}}</button>
         
-        <button class="boton" (click)="Verificar(miJuego.numeros[19])">{{miJuego.numeros[19]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[19].estado" (click)="Verificar(miJuego.numeros[19].numero)">{{miJuego.numeros[19].numero}}</button>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <button class="boton" (click)="Verificar(miJuego.numeros[19])">{{miJuego.numeros[20]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[20].estado" (click)="Verificar(miJuego.numeros[20].numero)">{{miJuego.numeros[20].numero}}</button>
         
-        <button class="boton" (click)="Verificar(miJuego.numeros[19])">{{miJuego.numeros[21]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[21].estado" (click)="Verificar(miJuego.numeros[21].numero)">{{miJuego.numeros[21].numero}}</button>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <button class="boton" (click)="Verificar(miJuego.numeros[19])">{{miJuego.numeros[22]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[22].estado" (click)="Verificar(miJuego.numeros[22].numero)">{{miJuego.numeros[22].numero}}</button>
         
-        <button class="boton" (click)="Verificar(miJuego.numeros[19])">{{miJuego.numeros[23]}}</button>
+        <button class="boton" *ngIf="miJuego.numeros[23].estado" (click)="Verificar(miJuego.numeros[23].numero)">{{miJuego.numeros[23].numero}}</button>
       </div>
     </div>
   </form>
+
+  <div id="snackbar">{{Mensajes}}</div>

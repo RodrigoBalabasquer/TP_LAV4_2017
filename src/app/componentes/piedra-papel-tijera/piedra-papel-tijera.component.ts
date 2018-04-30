@@ -14,7 +14,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
   eleccionUser : string;
   empezar : JuegoPiedraPapelTijera;
   nuevoJuego : JuegoPiedraPapelTijera;
-  eleccionMaquina : any = "piedra-papel-tijera!";
+  eleccionMaquina : any = "Piedra papel tijera!";
   resultado : any;
   estadisticas : any;
   mostrarBoton : boolean = false;
@@ -110,7 +110,6 @@ export class PiedraPapelTijeraComponent implements OnInit {
     var modelo=this;
     setTimeout(function(){ 
       x.className = x.className.replace("show", "");
-      //modelo.ocultarVerificar=false;
      }, 1000);
     console.info("objeto",x);
   

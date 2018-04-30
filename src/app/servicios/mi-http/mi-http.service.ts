@@ -11,6 +11,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class MiHttpService {
 
+  URl = "http://localhost:8080/apirest/apirestV6-JWT-MW-POO/";
+  //URl = "http://rodrigobalabasquer.esy.es/apirest/apirestV6-JWT-MW-POO/";
   constructor( public http: Http ) { }
 
   public httpGetP ( url: string)
@@ -61,7 +63,7 @@ export class MiHttpService {
     console.log(paramString);
     
     //return this.http.post(url,paramString).toPromise().then(this.extractData).catch(this.handleError);
-    return this.http.post(url,paramString,{headers:header}).toPromise().then(this.extractData).catch(this.handleError);
+    return this.http.post(this.URl+url,paramString,{headers:header}).toPromise().then(this.extractData).catch(this.handleError);
   }
   buscarJugador(url:string,usuario:string,clave:string)
   {
@@ -70,7 +72,7 @@ export class MiHttpService {
     let header = new Headers();
     header.append('Content-Type','application/json');
     //return this.http.post(url,paramString).toPromise().then(this.extractData).catch(this.handleError);
-    return this.http.post(url,paramString,{headers:header}).toPromise().then(this.extractData).catch(this.handleError);
+    return this.http.post(this.URl+url,paramString,{headers:header}).toPromise().then(this.extractData).catch(this.handleError);
   }
   buscarJuegos(url:string,juego:string,jugador:string,resultado:number)
   { 
@@ -79,7 +81,7 @@ export class MiHttpService {
     let header = new Headers();
     header.append('Content-Type','application/json');
     //return this.http.post(url,paramString).toPromise().then(this.extractData).catch(this.handleError);
-    return this.http.post(url,paramString,{headers:header}).toPromise().then(this.extractData).catch(this.handleError);
+    return this.http.post(this.URl+url,paramString,{headers:header}).toPromise().then(this.extractData).catch(this.handleError);
   }
   entregarUnJuego(url:string,game:any)
   {
@@ -93,6 +95,6 @@ export class MiHttpService {
     console.log(paramString);
     
     //return this.http.post(url,paramString).toPromise().then(this.extractData).catch(this.handleError);
-    return this.http.post(url,paramString,{headers:header}).toPromise().then(this.extractData).catch(this.handleError);
+    return this.http.post(this.URl+url,paramString,{headers:header}).toPromise().then(this.extractData).catch(this.handleError);
   }
 }

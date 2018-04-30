@@ -3,9 +3,8 @@
     <div class="col-sm-2 sidenav">
     </div>
     <div class="col-sm-8 text-left">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <div style="text-align:center">
-        <h1>
+        <h1 style="text-align:center;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
           {{nuevoJuego.nombre}}!
         </h1>
       </div>
@@ -17,7 +16,7 @@
             <!--<h2><button *ngIf="nuevoJuego.numeroSecreto==0 " (click)="generarnumero()" class="btn btn-info btn-lg">Nuevo número secreto</button></h2>-->
 
             <p> </p>
-            <h1>Palabra desordenada: {{nuevoJuego.palabraDesordenada}} </h1>
+            <h1>Palabra desordenada: </h1><h1 *ngIf="nuevoJuego.palabraDesordenada != ''">"{{nuevoJuego.palabraDesordenada}}"</h1>
             <br /> 
             <input [(ngModel)]="nuevoJuego.palabraIngresada" placeholder="ingrese la palabra ordenada" name="palabraOrdenadaa"
               type="text" class="form-control" style="width:50%" />
@@ -38,7 +37,7 @@
 
       </form>
       <div id="snackbar">{{Mensajes}}</div>
-      <div class="col-sm-2 sidenav">
+      <div class="col-sm-2 ">
       </div>
     </div>
   </div>

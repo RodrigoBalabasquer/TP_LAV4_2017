@@ -16,20 +16,15 @@ export class LoginComponent implements OnInit {
   miServicioJugador:JugadoresService;
   usuario = '';
   clave= '';
-  progreso: number;
-  progresoMensaje="esperando..."; 
   logeando=true;
-  ProgresoDeAncho:string;
-
-  clase="progress-bar progress-bar-info progress-bar-striped ";
+  mensaje = "";
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     ServicioJugador: JugadoresService) {
-      this.progreso=0;
-      this.ProgresoDeAncho="0%";
       this.miServicioJugador = ServicioJugador;
+      localStorage.clear();
 
   }
 
@@ -47,53 +42,18 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("Usuario",JSON.stringify(datos));
       this.router.navigate(['/Principal']);
       }
-      else
-      alert("Datos incorrectos");
+      else{
+        this.mensaje = "Problema al iniciar sesión, el usuario o la contraseña son incorrectos";
+      }
     })
     .catch( 
       (noSeEncontroUsuario) => {alert("Datos incorrectos");}
     );
   }
-  MoverBarraDeProgreso() {
-    
-    this.logeando=false;
-    this.clase="progress-bar progress-bar-danger progress-bar-striped active";
-    this.progresoMensaje="NSA spy..."; 
-    let timer = TimerObservable.create(200, 50);
-    this.subscription = timer.subscribe(t => {
-      console.log("inicio");
-      this.progreso=this.progreso+1;
-      this.ProgresoDeAncho=this.progreso+20+"%";
-      switch (this.progreso) {
-        case 15:
-        this.clase="progress-bar progress-bar-warning progress-bar-striped active";
-        this.progresoMensaje="Verificando ADN..."; 
-          break;
-        case 30:
-          this.clase="progress-bar progress-bar-Info progress-bar-striped active";
-          this.progresoMensaje="Adjustando encriptación.."; 
-          break;
-          case 60:
-          this.clase="progress-bar progress-bar-success progress-bar-striped active";
-          this.progresoMensaje="Recompilando Info del dispositivo..";
-          break;
-          case 75:
-          this.clase="progress-bar progress-bar-success progress-bar-striped active";
-          this.progresoMensaje="Recompilando claves facebook, gmail, chats..";
-          break;
-          case 85:
-          this.clase="progress-bar progress-bar-success progress-bar-striped active";
-          this.progresoMensaje="Instalando KeyLogger..";
-          break;
-          
-        case 100:
-          console.log("final");
-          this.subscription.unsubscribe();
-          this.Entrar();
-          break;
-      }     
-    });
-    //this.logeando=true;
+  Cargar()
+  {
+    this.usuario = "Invitado";
+    this.clave = "12345";
   }
 
 }

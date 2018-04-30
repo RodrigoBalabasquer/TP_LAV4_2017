@@ -1,77 +1,50 @@
-<!--<body>
-  <div class="jumbotron">
-    <h2 id="terminos">Terminos y condiciones</h2>
-    <p>El Gobierno de la República Argentina (en adelante el “Gobierno Nacional”) no es responsable por los daños y perjuicios que puedan surgir, incluyendo, sin límite, daños, pérdidas o gastos directos, indirectos, que surjan en relación con el uso de los Activos Digitales o la imposibilidad de uso, en relación con cualquier falla en el vencimiento, error, omisión, interrupción, defecto, demora en la operación o transmisión, virus de computadora o falla del sistema de línea, aún en el caso de que el Gobierno Nacional o sus representantes fueran informados sobre la posibilidad de dichos daños, pérdidas o gastos.</p>
-    <p>El Gobierno Nacional no controla ni garantiza la ausencia de virus ni de otros elementos en los contenidos que puedan producir alteraciones en su sistema informático (software y hardware) o en los documentos electrónicos y ficheros almacenados en su sistema informático.</p>
-    <p>El Gobierno Nacional no puede garantizar que la transmisión de información por parte de los Usuarios sea completamente segura. El Usuario asume este riesgo.</p>
-   
-  </div>
-  <strong><p>No leer lo anterior, es solo un ejemplo sacado de https://www.argentina.gob.ar/terminos-y-condiciones </p></strong>
-  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Acepto</button>
-  <button  class="cancelbtn"  routerLink="/Principal" style="width:auto;">No acepto</button>
-  <div id="id01" class="modal">
-    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-    <form class="modal-content animate" >
-      <div class="container">
-        <label><b>Email</b></label>
-        <input type="text" placeholder="Ingresa tu correo" name="email" required>
-  
-        <label><b>Clave</b></label>
-        <input type="password" placeholder="Aca la clave" name="psw" required>
-  
-        <label><b>Repita la clave</b></label>
-        <input type="password" placeholder="Aca repeti la misa clave  de arriba" name="psw-repeat" required>
-        <input type="checkbox" checked="checked">Recordar mis datos
-        <p>creando la cuenta aceptando los<a  onclick="document.getElementById('id01').style.display='none'"  >Terminos y condiciones</a>.</p>
-  
-        <div class="clearfix">
-          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Me arrepenti</button>
-          <button type="submit" class="signupbtn">Registrarme</button>
+<div class="container">
+  <div class="jumbotron" style="padding:25px;background-color: darkblue;border-radius: 10px">
+    <form [formGroup]="registroForm" (ngSubmit)="Registrar()">
+      <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;text-align: center;color: darkgoldenrod">Registro</h1>
+
+      <div style="text-align: center;">
+        <img class="imgcontainer" src="./assets/imagenes/registro.png" alt="Avatar" >
+      </div>
+      <div>
+        <div>
+          <div>
+            <!--<img [src]="RutasService.rutaImagenesSitio + 'user.png'" class="img-circle img-responsive center-block" width="128" height="128">-->
+            <br>
+            <div class="form-group">
+              <!--<img src="" id="fotoPrevia" class="img-thumbnail">-->
+              <label class="labelO">* Campos obligatorios</label>
+              <br>
+              <label class="labelO">* 5 caracteres mínimo</label><input type="text" class="form-control" [formControl]="usuario" [(ngModel)]="jugador.usuario" placeholder="Nombre de usuario">
+              <br>
+              <label class="labelO">* 5 caracteres mínimo</label><input type="text" class="form-control" [formControl]="nombre" [(ngModel)]="jugador.nombre" placeholder="Nombre" autofocus>
+              <br>
+              <label class="labelO">* 5 caracteres mínimo</label><input type="text" class="form-control" [formControl]="apellido" [(ngModel)]="jugador.apellido" placeholder="Apellido" autofocus>
+              <br>
+              <label class="labelO">* 5 caracteres mínimo</label><input type="email" class="form-control" [formControl]="email" [(ngModel)]="jugador.email" placeholder="Correo electrónico">
+              <br>
+              <label class="labelO">* 5 caracteres mínimo</label><input type="password" class="form-control" [formControl]="clave" [(ngModel)]="jugador.contrasenia" placeholder="Contraseña">
+              <br>
+              <label class="labelO">* misma contraseña</label><input type="password" class="form-control" [formControl]="copiaClave" [(ngModel)]="claveCopia" placeholder="Repita Contraseña">
+              <br>
+
+              <div class="row">
+                <div class="col-lg-0 col-md-0 col-sm-0 col-xs-0">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <button type="submit" id="botonRegistro" class="btn btn-success" style="width: 100%" [disabled]="!registroForm.valid">Registrar</button>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <button class="btn btn-danger" style="width: 100%" (click)="cancelar()">Cancelar</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
+
       </div>
     </form>
   </div>
-  
-  <script>
-  // Get the modal
-  var modal = document.getElementById('id01');
-  
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
-  }
-  </script>
-  
-  </body>-->
-  <div class="container">
-  <div>
-    <div>
-      <div>
-        <div>
-          <!--<img [src]="RutasService.rutaImagenesSitio + 'user.png'" class="img-circle img-responsive center-block" width="128" height="128">-->
-          <h1 class="text-primary">Registro</h1>
-          <br>
-          <div class="form-group">
-            <!--<img src="" id="fotoPrevia" class="img-thumbnail">-->
-            <input type="text" class="form-control" [(ngModel)]="jugador.usuario" placeholder="Nombre de usuario" autofocus>
-            <br>
-            <input type="text" class="form-control" [(ngModel)]="jugador.nombre" placeholder="Nombre" autofocus>
-            <br>
-            <input type="text" class="form-control" [(ngModel)]="jugador.apellido" placeholder="Apellido" autofocus>
-            <br>
-            <input type="email" class="form-control" [(ngModel)]="jugador.email" placeholder="Correo electrónico">
-            <br>
-            <input type="password" class="form-control" [(ngModel)]="jugador.contrasenia" placeholder="Contraseña">
-            <br>
-            <input type="password" class="form-control" [(ngModel)]="claveCopia" placeholder="Repita Contraseña">
-            <br>
-            <button class="btn btn-default pull-left" (click)="cancelar()">Cancelar</button>
-            <button type="submit" id="botonRegistro" class="btn btn-success pull-right animated slideInRight" (click)="registrar()">Registrar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>	
 </div>
+

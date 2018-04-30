@@ -45,19 +45,22 @@ filtrado:any;
     });
   }
 
-  guardarJugador(jugador:Jugador)
+  guardarJugador(jugador:Jugador):Promise<boolean>
   {
-    this.miPlayerArchive.miHttp.entregarUnJugador("http://localhost:8080/apirest/apirestV6-JWT-MW-POO/usuario/",jugador)
+    let result : Promise<boolean> = this.miPlayerArchive.miHttp.entregarUnJugador("usuario/",jugador)
     .then(datos=> {
-      console.log(datos);
+      return true;
     })
-    .catch(error => {console.log(error)});
+    .catch(error => {
+      console.log(error);
+      return false;});
+    return result;
   }
   BuscarUsuario(usuario:string,clave:string):Promise<Jugador>
   {
     let promesa: Promise<Jugador> = new Promise((resolve, reject) =>
     {
-      this.miPlayerArchive.miHttp.buscarJugador("http://localhost:8080/apirest/apirestV6-JWT-MW-POO/usuario/traer",usuario,clave)
+      this.miPlayerArchive.miHttp.buscarJugador("usuario/traer",usuario,clave)
       .then(datos=> {
         if(datos.length  > 0 ){
         let jugador: Jugador = new Jugador(datos[0].id,datos[0].usuario,datos[0].nombre,datos[0].apellido,datos[0].contrasenia,datos[0].email);

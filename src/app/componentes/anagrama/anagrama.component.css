@@ -1,8 +1,9 @@
 
 form {
-    border: 10px solid #f1f1f1;
+    border: 10px solid black;
     padding: 10px;
-    background:gray;
+    background:gold;
+    border-radius: 10px;
 }
 
 input[type=text], input[type=password] {
@@ -74,7 +75,7 @@ span.psw {
     visibility: hidden;
     min-width: 250px;
     margin-left: -125px;
-   
+    border-radius: 20px;
     color: #fff;
     text-align: center;
     border-radius: 2px;
@@ -83,12 +84,13 @@ span.psw {
     z-index: 1;
     left: 50%;
     bottom: 30px;
-    font-size: 17px;
+    font-size: 30px;
 }
 #snackbar.Ganador {
     background-color: #059F2F;
 }
 #snackbar.Perdedor {
+    left: 45%;
     background-color: #FF0000;
 }
 #snackbar.show {

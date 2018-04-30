@@ -14,7 +14,7 @@ export class AgilidadVisualComponent implements OnInit {
   miServicioJuego:JuegoServiceService;
   Tiempo: number;
   repetidor:any;
-  
+  Mensajes = "";
 
   constructor(ServicioJuego: JuegoServiceService) {
     this.miJuego = new JuegoAgilidadVisual("Agilidad Visual");
@@ -32,18 +32,19 @@ export class AgilidadVisualComponent implements OnInit {
             if(num == 1)
             {   
                 clearInterval(this.repetidor);
-                alert("Usted Gano!!!");
                 this.miJuego.generado = false;
                 this.miJuego.numeroActual = 24;
                 this.miJuego.gano = true;
+                this.MostarMensaje("Usted Gano!!!",this.miJuego.gano)
                 this.enviarJuego.emit(this.miJuego);
                 this.miServicioJuego.guardarJuego(this.miJuego);
           
             }
             else
             {
-                let index = this.miJuego.numeros.indexOf(num);
-                this.miJuego.numeros.splice(index,1);
+                let index = this.miJuego.numeros.findIndex(valor => valor.numero === num);
+                this.miJuego.numeros[index].estado=false;
+                //this.miJuego.numeros.splice(index,1);
                 this.miJuego.numeroActual--;
             }
         }
@@ -51,10 +52,10 @@ export class AgilidadVisualComponent implements OnInit {
         {   
             clearInterval(this.repetidor);
             this.Tiempo=50;
-            alert("Usted Perdio!!!");
             this.miJuego.generado = false;
             this.miJuego.numeroActual = 24;
             this.miJuego.gano = false;
+            this.MostarMensaje("Usted Perdio!!!",this.miJuego.gano)
             this.enviarJuego.emit(this.miJuego);
             this.miServicioJuego.guardarJuego(this.miJuego);
         }
@@ -68,12 +69,12 @@ export class AgilidadVisualComponent implements OnInit {
       for(let i=0;i<24;i++)
       {
           Num = Math.floor((Math.random() * numerosDisponibles.length) + 1);
-          this.miJuego.numeros.push(numerosDisponibles[Num - 1]);
+          this.miJuego.numeros.push({numero:numerosDisponibles[Num - 1],estado:true});
           numerosDisponibles.splice(Num - 1,1);
       }
       this.miJuego.generado = true;
       this.miJuego.numeroActual = 24;
-      
+      console.log(this.miJuego.numeros);
       this.repetidor = setInterval(()=>{ 
       this.Tiempo--;
         if(this.Tiempo==0 ) {
@@ -84,11 +85,26 @@ export class AgilidadVisualComponent implements OnInit {
           this.miJuego.generado = false;
           this.enviarJuego.emit(this.miJuego);
           this.miServicioJuego.guardarJuego(this.miJuego);
-          alert("Se acabo el tiempo");
+          this.MostarMensaje("Se acabo el tiempo",this.miJuego.gano)
         }
       }, 900);
   }
-
+  MostarMensaje(mensaje:string="este es el mensaje",ganador:boolean=false) {
+    this.Mensajes=mensaje;    
+    var x = document.getElementById("snackbar");
+    if(ganador)
+      {
+        x.className = "show Ganador";
+      }else{
+        x.className = "show Perdedor";
+      }
+    var modelo=this;
+    setTimeout(function(){ 
+      x.className = x.className.replace("show", "");
+     }, 1500);
+    console.info("objeto",x);
+  
+   }  
   ngOnInit() {
   }
 

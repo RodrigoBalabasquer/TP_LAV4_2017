@@ -3,6 +3,35 @@
    width: 50px;
    height: 50px;
 }*/
+
+#snackbar {
+    visibility: hidden;
+    margin-left: -125px;
+   
+    color: #fff;
+    text-align: center;
+    border-radius: 20px;
+    padding: 20px;
+    position: fixed;
+    z-index: 1;
+    
+    bottom: 30px;
+    font-size: 30px;
+}
+#snackbar.Ganador {
+    background-color: #059F2F;
+    left: 50%;
+}
+#snackbar.Perdedor {
+    left: 50%;
+    background-color: #FF0000;
+}
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
 @media(min-width: 1200px){
     .boton{
         width: 100%;

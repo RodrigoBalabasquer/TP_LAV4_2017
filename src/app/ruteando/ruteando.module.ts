@@ -40,7 +40,7 @@ children:
       {path: 'AgilidadaMasListado' , component: AgilidadMasListadoComponent},
       {path: 'Agilidad' , component: AgilidadAritmeticaComponent},
       {path: 'Visual' ,component: AgilidadVisualComponent},
-      {path: 'PPF' , component: PiedraPapelTijeraComponent},
+      {path: 'PPT' , component: PiedraPapelTijeraComponent},
       {path: 'Anagrama' , component: AnagramaComponent}]
 },
 {path: '**' , component: ErrorComponent},

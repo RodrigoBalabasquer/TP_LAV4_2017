@@ -2,7 +2,7 @@ import { Juego } from '../clases/juego'
 
 export class JuegoAgilidadVisual extends  Juego {
     
-    numeros: Array<number> = [];
+    numeros: Array<any> = [];
     generado: boolean = false;
     numeroActual: number; 
     constructor(nombre?: string, gano?: boolean, jugador?:string) {

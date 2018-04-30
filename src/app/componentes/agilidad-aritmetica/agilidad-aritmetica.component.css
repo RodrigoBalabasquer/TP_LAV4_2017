@@ -1,0 +1,34 @@
+form {
+    border: 10px solid black;
+    padding: 10px;
+    background:gold;
+    border-radius: 10px;
+}
+
+#snackbar {
+    visibility: hidden;
+    margin-left: -125px;
+   
+    color: #fff;
+    text-align: center;
+    border-radius: 20px;
+    padding: 20px;
+    position: fixed;
+    z-index: 1;
+    left: 45%;
+    bottom: 30px;
+    font-size: 30px;
+}
+#snackbar.Ganador {
+    background-color: #059F2F;
+    left: 45%;
+}
+#snackbar.Perdedor {
+    background-color: #FF0000;
+    left: 50%;
+}
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
