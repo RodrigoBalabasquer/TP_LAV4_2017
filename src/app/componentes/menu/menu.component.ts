@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { MenuItem } from 'primeng/primeng';
+import swal from 'sweetalert'
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -55,6 +56,12 @@ export class MenuComponent implements OnInit {
                   command: e => {
                     this.router.navigateByUrl('/Juegos/Visual');
                   }
+                },
+                {
+                  label: 'Tateti',
+                  command: e => {
+                    this.router.navigateByUrl('/Juegos/Tateti');
+                  }
                 }
         ]
       },
@@ -83,7 +90,16 @@ export class MenuComponent implements OnInit {
   }
   LogOut()
   {
-    this.router.navigate(['/Login']);
+    swal({
+      title: "Está seguro que desea salir?",
+      icon: "warning",
+      buttons: ['Cancelar',true],
+      })
+    .then((willDelete) => {
+      if (willDelete) {
+          this.router.navigate(['/Login']);
+    }});
+    
   }
   Juego(tipo: string) {
     switch (tipo) {

@@ -1,0 +1,29 @@
+<div style="text-align:center">
+    <h1 style="text-align:center;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+        {{nuevoJuego.nombre}}
+    </h1>
+    <br>
+    <br>
+        
+    <div class="boton-tateti">
+        <button mat-raised-button (click)="setbutton(11)"  [disabled]="band==true"><img src="../../../assets/imagenes/nothing.gif" border="0" name="rc11"></button>
+        <button mat-raised-button (click)="setbutton(12)" [disabled]="band==true"><img src="../../../assets/imagenes/nothing.gif" border="0" name="rc12"></button>
+        <button mat-raised-button (click)="setbutton(13)" [disabled]="band==true"><img src="../../../assets/imagenes/nothing.gif" border="0" name="rc13"></button>
+        <br>
+        <button mat-raised-button (click)="setbutton(21)" [disabled]="band==true"><img src="../../../assets/imagenes/nothing.gif" border="0" name="rc21"></button>
+        <button mat-raised-button (click)="setbutton(22)" [disabled]="band==true"><img src="../../../assets/imagenes/nothing.gif" border="0" name="rc22"></button>
+        <button mat-raised-button (click)="setbutton(23)" [disabled]="band==true"><img src="../../../assets/imagenes/nothing.gif" border="0" name="rc23"></button>
+        <br>
+        <button mat-raised-button (click)="setbutton(31)" [disabled]="band==true"><img src="../../../assets/imagenes/nothing.gif" border="0" name="rc31"></button>
+        <button mat-raised-button (click)="setbutton(32)" [disabled]="band==true"><img src="../../../assets/imagenes/nothing.gif" border="0" name="rc32"></button>
+        <button mat-raised-button (click)="setbutton(33)" [disabled]="band==true"><img src="../../../assets/imagenes/nothing.gif" border="0" name="rc33"></button>
+        <br>
+    </div>
+
+    <br>
+    <br>
+    <br>
+        <button *ngIf="reinicio" mat-raised-button color="accent" (click)="valores()" class="btn-partido">Nuevo Partido</button>
+    <br>
+    <br>
+</div>

@@ -20,6 +20,7 @@ import { QuienSoyComponent } from '../componentes/quien-soy/quien-soy.component'
 import { JugadoresListadoComponent } from '../componentes/jugadores-listado/jugadores-listado.component';
 import { PiedraPapelTijeraComponent } from '../componentes/piedra-papel-tijera/piedra-papel-tijera.component';
 import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
+import { TatetiComponent} from '../componentes/tateti/tateti.component';
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
@@ -41,7 +42,9 @@ children:
       {path: 'Agilidad' , component: AgilidadAritmeticaComponent},
       {path: 'Visual' ,component: AgilidadVisualComponent},
       {path: 'PPT' , component: PiedraPapelTijeraComponent},
-      {path: 'Anagrama' , component: AnagramaComponent}]
+      {path: 'Anagrama' , component: AnagramaComponent},
+      {path: 'Tateti', component: TatetiComponent}
+      ]
 },
 {path: '**' , component: ErrorComponent},
 {path: 'error' , component: ErrorComponent}];

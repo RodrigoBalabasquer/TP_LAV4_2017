@@ -51,6 +51,7 @@ import { AgmCoreModule } from '@agm/core';
 import { SexoPipe } from './pipes/sexo.pipe';
 import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/piedra-papel-tijera.component';
 import { AgilidadVisualComponent } from './componentes/agilidad-visual/agilidad-visual.component';
+import { TatetiComponent } from './componentes/tateti/tateti.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { AgilidadVisualComponent } from './componentes/agilidad-visual/agilidad-
     JugadoresListadoComponent,
     SexoPipe,
     PiedraPapelTijeraComponent,
-    AgilidadVisualComponent
+    AgilidadVisualComponent,
+    TatetiComponent
   ],
   imports: [
     BrowserModule,

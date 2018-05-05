@@ -35,7 +35,12 @@ export class AgilidadVisualComponent implements OnInit {
                 this.miJuego.generado = false;
                 this.miJuego.numeroActual = 24;
                 this.miJuego.gano = true;
-                this.MostarMensaje("Usted Gano!!!",this.miJuego.gano)
+                swal({
+                  title: "Genial has ganado!!!",
+                  icon: "success",
+                  timer: 3000,
+                });
+                //this.MostarMensaje("Usted Gano!!!",this.miJuego.gano)
                 this.enviarJuego.emit(this.miJuego);
                 this.miServicioJuego.guardarJuego(this.miJuego);
           
@@ -55,7 +60,11 @@ export class AgilidadVisualComponent implements OnInit {
             this.miJuego.generado = false;
             this.miJuego.numeroActual = 24;
             this.miJuego.gano = false;
-            this.MostarMensaje("Usted Perdio!!!",this.miJuego.gano)
+            swal({
+              title: "Lastima se ha equivocado",
+              icon: "error",
+            });
+            //this.MostarMensaje("Usted Perdio!!!",this.miJuego.gano)
             this.enviarJuego.emit(this.miJuego);
             this.miServicioJuego.guardarJuego(this.miJuego);
         }
@@ -64,6 +73,7 @@ export class AgilidadVisualComponent implements OnInit {
   GenerarJuego= function():void
   {
       this.miJuego.numeros = [];
+      this.Tiempo=50;
       var Num: number = 0;
       var numerosDisponibles: Array<number> = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
       for(let i=0;i<24;i++)
@@ -85,7 +95,11 @@ export class AgilidadVisualComponent implements OnInit {
           this.miJuego.generado = false;
           this.enviarJuego.emit(this.miJuego);
           this.miServicioJuego.guardarJuego(this.miJuego);
-          this.MostarMensaje("Se acabo el tiempo",this.miJuego.gano)
+          //this.MostarMensaje("Se acabo el tiempo",this.miJuego.gano)
+          swal({
+            title: "Lastima se ha acabado el tiempo",
+            icon: "error",
+          });
         }
       }, 900);
   }

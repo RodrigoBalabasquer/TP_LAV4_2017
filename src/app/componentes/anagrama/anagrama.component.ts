@@ -48,7 +48,7 @@ export class AnagramaComponent implements OnInit {
     
     }else{
       this.contador++;
-      if(this.contador == 10)
+      if(this.contador == 5)
       { 
         this.enviarJuego.emit(this.nuevoJuego);
         this.mensaje = "Ooops, se te acabaron los intentos!";
@@ -82,7 +82,7 @@ export class AnagramaComponent implements OnInit {
     var modelo = this;
     setTimeout(function(){ 
       x.className = x.className.replace("show", "");
-      if(cont < 10)
+      if(cont < 5)
         modelo.ocultarVerificar=false;
      }, 1500);
     console.info("objeto",x);

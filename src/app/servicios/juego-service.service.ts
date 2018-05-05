@@ -5,6 +5,7 @@ import { JuegoAgilidad} from '../clases/juego-agilidad';
 import { JuegoAgilidadVisual} from '../clases/juego-agilidad-visual';
 import { JuegoAnagrama} from '../clases/juego-anagrama';
 import { JuegoPiedraPapelTijera} from '../clases/juego-piedra-papel-tijera';
+import { Tateti} from '../clases/tateti';
 import { MiHttpService } from './mi-http/mi-http.service';
 import { ArchivosJugadoresService } from './archivos-jugadores.service'
 
@@ -99,6 +100,9 @@ export class JuegoServiceService {
                   break;
                 case "Adivina el número":
                   juegos.push(new JuegoAdivina(datos[i].juego,datos[i].resultado,datos[i].jugador))
+                  break;
+                case "TA-TE-TI":
+                  juegos.push(new Tateti(datos[i].juego,datos[i].resultado,datos[i].jugador))
                   break;
               }
               //juegos.push(new Juego(datos[i].juego,datos[i].jugador,datos[i].resultado))

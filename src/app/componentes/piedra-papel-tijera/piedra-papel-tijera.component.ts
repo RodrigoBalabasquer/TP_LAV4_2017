@@ -1,7 +1,6 @@
 import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
 import { JuegoPiedraPapelTijera } from '../../clases/juego-piedra-papel-tijera';
 import { JuegoServiceService } from "../../servicios/juego-service.service";
-
 @Component({
   selector: 'app-piedra-papel-tijera',
   templateUrl: './piedra-papel-tijera.component.html',
@@ -69,6 +68,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
         this.miServicioJuego.guardarJuego(this.nuevoJuego);
     
         this.MostarMensaje("Ganaste!!!",true);
+        
         this.mostrarBoton = false;
         this.eleccionMaquina = "piedra-papel-tijera!";
         this.resultado = "";

@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Jugador } from "../../clases/jugador";
 import { JugadoresService } from "../../servicios/jugadores.service";
 import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import swal from 'sweetalert';
 //para poder hacer las validaciones
 //import { Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 function copiaClave(input: FormControl) {
@@ -82,15 +83,25 @@ export class RegistroComponent implements OnInit {
   }
   Registrar()
   { 
-    this.miServicioJugador.guardarJugador(this.jugador)
-    .then((datos)=> {
-      if(datos == true){
-      localStorage.setItem("Usuario",JSON.stringify(this.jugador));
-      this.router.navigate(['/Principal']);
-      }
-    })
-    .catch( 
-      (noSeEncontroUsuario) => {alert("Error en el sistema");}
-    );
+
+    swal({
+      title: "Está seguro que desea crear el usuario con estos datos?",
+      icon: "info",
+      buttons: ['Cancelar',true],
+      })
+    .then((willDelete) => {
+      if (willDelete) {
+          this.miServicioJugador.guardarJugador(this.jugador)
+          .then((datos)=> {
+            if(datos == true){
+            localStorage.setItem("Usuario",JSON.stringify(this.jugador));
+            this.router.navigate(['/Principal']);
+            }
+          })
+          .catch( 
+            (noSeEncontroUsuario) => {alert("Error en el sistema");}
+          );
+    }});
+    
   }
 }
